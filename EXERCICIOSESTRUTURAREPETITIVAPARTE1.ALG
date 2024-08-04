@@ -37,7 +37,29 @@ algoritmo "Nome do Programa"
 //média semestral. Faça com que o algoritmo só aceite notas válidas (uma nota válida deve pertencer ao
 //intervalo [0,10]). Cada nota deve ser validada separadamente
 
-var 
+//Problema "combustivel" (adaptado de URI 1134)
+//Um posto de combust�veis deseja determinar qual de seus produtos tem a prefer�ncia de seus clientes.
+//Escreva um algoritmo para ler o tipo de combust�vel abastecido (codificado da seguinte forma:
+//1.�lcool 2.Gasolina 3.Diesel 4.Fim). Caso o usu�rio informe um c�digo inv�lido (fora da faixa de 1 a
+//4) deve ser solicitado um novo c�digo (at� que seja v�lido). O programa ser� encerrado quando o
+//c�digo informado for o n�mero 4, devendo ent�o mostrar a mensagem "MUITO OBRIGADO", bem
+//como as quantidades de cada combust�vel.
+
+//Problema "pares_consecutivos" (adaptado de URI 1159)
+//O programa deve ler um valor inteiro X indefinidas vezes. (O programa irá parar quando o valor de X
+//for igual a 0). Para cada X lido, imprima a soma dos 5 pares consecutivos a partir de X, inclusive o X
+//, se for par. Se o valor de entrada for 4, por exemplo, a saída deve ser 40, que é o resultado da operação:
+//4+6+8+10+12, enquanto que se o valor de entrada for 11, por exempo, a saída deve ser 80, que é a
+//soma de 12+14+16+18+20. 
+
+//Problema "tabuada"
+//Ler um número inteiro N, daí mostrar na tela a tabuada de N para 1 a 10, conforme exemplo.
+
+//Problema "soma_impares" (adaptado de URI 1071)
+//Leia 2 valores inteiros X e Y (em qualquer ordem). A seguir, calcule e mostre a soma dos números
+//impares entre eles. 
+
+var
 menu : real 
 op : caractere
 //Problema Crecente 
@@ -49,21 +71,29 @@ senha,tentativaSenha : inteiro
 //Problema quadrante
 x,y : inteiro
 //Problema validacao de nota 
-nota1,nota2, media: inteiro
+nota1,nota2,mediaNota:real
+//Problema Combustivel
+codigo, alcool, gasolina, diesel : inteiro
+//Problema pares consecutivos
+soma, x: Inteiro
+//Problema tabuada
+N,i: inteiro
+//Problema Soma impares
+NIT,NIT1,NIT2,x1,x2,soma:inteiro
 Inicio
 
    repita
 
    escreval("Digite o numero correspondente ao programa(atividade)")
-   escreval("Problema - Crescente          (1) - Media idades   (2)")
-   escreval("         - Senha fixa         (3) - Quadrante      (4)")
-   escreval("         - validacao  de nota (5) - Glicose        (6)")
-   escreval("         - Dardo              (7) - Temperatura    (8)")
-   escreval("         - Lanchonete         (9) - Multiplos      (10)")
-   escreval("         - Aumento           (11) - Duracao        (12)")
-   escreval("         - Coordenadas       (13) ")
+   escreval("Problema - Crescente          (1) - Media idades        (2)")
+   escreval("         - Senha fixa         (3) - Quadrante           (4)")
+   escreval("         - Validacao  de nota (5) - Combustivel         (6)")
+   escreval("         - Pares consecutivos (7) - Tabuada             (8)")
+   escreval("         - Soma Impares       (9) -                    (10)")
+   escreval("         -                   (11) -                     (12)")
+   escreval("         -                   (13) -                        ")
    escreval()
-   leia(Menu)
+   leia(menu)
    
    
    escolha menu
@@ -167,19 +197,134 @@ Inicio
       escreval("PROBLEMA VALIDACAO DE NOTA")
       escreval()
       
-      escreval("Digite a primeira nota:")
+      escreva("Digite a primeira nota:")
       leia(nota1)
-      escreval("Digite a segunda nota:")
+
+      enquanto (nota1 < 0) ou (nota1 > 10) faca
+         escreva("Valor inv�lido! Tente novamente: ")
+         leia (nota1)
+      fimenquanto
+      
+      escreva("Digite a segunda nota:")
       leia(nota2)
-    enquanto (nota1 < 0) ou  faca
-      escreval ("Valor invalido! Tente novamente:")
-    fimenquanto    
+
+      enquanto (nota2 < 0) ou (nota2 > 10) faca
+         escreva("Valor inv�lido! Tente novamente: ")
+         leia (nota2)
+      fimenquanto
+
+      mediaNota <- (nota1 + nota2) / 2
+
+      escreval("Sua media �:",mediaNota:4:2)
+   caso 6
+        escreval()
+        escreval("PROBLEMA COMBUSTIVEL")
+        escreval()
 
 
+        alcool  <- 0
+        gasolina  <- 0
+        diesel <- 0
+        
+        escreva("informe em codigo (1, 2, 3) ou 4 para parar: ")
+        leia(codigo)
+        
+        enquanto codigo <> 4 faca
+        
+           escolha codigo
+              caso 1
+                  alcool  <- alcool + 16
+
+              caso 2
+                  gasolina <- gasolina + 1
+
+              caso 3
+                  diesel <- diesel + 1
+
+           fimescolha
+
+           escreva ("Informe um codigo (1, 2, 3) ou 4 para parar: ")
+
+           leia(codigo)
+        fimenquanto
+
+        escreval()
+        escreval("AGRADECEMOS A PARTICIPAÇÃO!")
+        escreval()
+        escreval("Alcool: ",alcool)
+        escreval("Gasolina: ",gasolina)
+        escreval("Diesel: ",diesel)
+
+   caso 7 
+      escreval()
+      escreval("PROBLEMA PARES CONSECUTIVOS")
+      escreval()
+
+      escreval("Digite um numero inteiro:")
+      escreval("para encerrar programa , digite 0")
+      leia(x)
+
+      enquanto x <> 0 faca
+        se x % 2 <> 0 entao 
+         x <- x+1
+         fimse
+
+         soma <- 5 * x + 20 
+         escreval ("RESULTADO : ",soma)
+
+         escreva("Digite um número inteiro: ")
+         leia(x)
+      fimenquanto
+      escreval("CONTAGEM ENCERRADA!")
+
+
+   caso 8 
+      escreval()
+      escreval("PROBLEMA TABUADA")
+      escreval()
+
+      escreva("Deseja a tabuada para qual valor? ")
+      leia(N) 
+      escreval()
+
+      para i de 1 ate 10 faca 
+         escreval(N ," x ", i, " = ", N*i)
+      fimpara   
+   caso 9
+      escreval()
+      escreval("PROBLEMA SOMA IMPARES")
+      escreval()
+
+      escreval("Digite dois numeros: ")
+      leia(NIT1)
+      leia(NIT2)
+      escreval()
+      
+      se NIT1 < NIT2 entao 
+
+         x1 <- NIT1 + 1
+         x2 <- NIT2 - 1
+         senao 
+            x1 <- NIT2 + 1
+            x2 <- NIT1 - 1 
+      fimse
+
+      para NIT de x1 ate x2 faca
+         se NIT %2 <> 0 entao
+            soma <- NIT + NIT 
+            escreval()      
+         fimse   
+      fimpara
+
+      escreval(soma-2)
+      
    fimescolha
+
+   
    escreval()
    escreval("Deseja voltar ao menu ?(S/N)")
    leia(op)
+   
 
    se (op = "S") ou (op = "s") entao
       limpatela
