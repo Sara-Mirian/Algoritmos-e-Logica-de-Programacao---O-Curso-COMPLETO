@@ -59,6 +59,14 @@ algoritmo "Nome do Programa"
 //Leia 2 valores inteiros X e Y (em qualquer ordem). A seguir, calcule e mostre a soma dos números
 //impares entre eles. 
 
+//Problema "sequencia_impares" (adaptado de URI 1067)
+//Leia um valor inteiro X. Em seguida mostre os ímpares de 1 até X, um valor por linha, inclusive o X,
+//se for o caso. 
+
+//Problema "dentro_fora" (adaptado de URI 1072)
+//Leia um valor inteiro N. Este valor será a quantidade de valores inteiros X que serão lidos em seguida.
+//Mostre quantos destes valores X estão dentro do intervalo [10,20] e quantos estão fora do intervalo,
+//conforme exemplo 
 var
 menu : real 
 op : caractere
@@ -79,7 +87,11 @@ soma, x: Inteiro
 //Problema tabuada
 N,i: inteiro
 //Problema Soma impares
-NIT,NIT1,NIT2,x1,x2,soma:inteiro
+NIT,NIT1,NIT2,soma:inteiro
+//Problema sequencia dos impares 
+NUMimpar :inteiro
+//Problema dentro fora
+numero,numeroCont,dentro,fora:inteiro
 Inicio
 
    repita
@@ -89,8 +101,8 @@ Inicio
    escreval("         - Senha fixa         (3) - Quadrante           (4)")
    escreval("         - Validacao  de nota (5) - Combustivel         (6)")
    escreval("         - Pares consecutivos (7) - Tabuada             (8)")
-   escreval("         - Soma Impares       (9) -                    (10)")
-   escreval("         -                   (11) -                     (12)")
+   escreval("         - Soma Impares       (9) - Sequencia Impares   (10)")
+   escreval("         - Dentro ou Fora    (11) -                     (12)")
    escreval("         -                   (13) -                        ")
    escreval()
    leia(menu)
@@ -300,24 +312,56 @@ Inicio
       leia(NIT2)
       escreval()
       
-      se NIT1 < NIT2 entao 
-
-         x1 <- NIT1 + 1
-         x2 <- NIT2 - 1
-         senao 
-            x1 <- NIT2 + 1
-            x2 <- NIT1 - 1 
+      se NIT1 > NIT2 entao 
+         NIT <- NIT1
+         NIT1 <- NIT2
+         NIT2 <- NIT
       fimse
 
-      para NIT de x1 ate x2 faca
-         se NIT %2 <> 0 entao
-            soma <- NIT + NIT 
-            escreval()      
-         fimse   
-      fimpara
+      soma <- 0
+      para i de NIT1+1 ate NIT2-1 faca
+         se i % 2 <> 0 entao 
+            soma <- soma + i
+         fimse
+      fimpara   
+      escreval("SOMA TOTAL DOS IMPARES:",soma)
 
-      escreval(soma-2)
-      
+   caso 10
+      escreval()
+      escreval("PROBLEMA SEQUENCIA IMPARES")
+      escreval()
+
+      escreval("Deseja ver os números impares de 1 até que número ? " )
+      leia(NUMimpar)
+      escreval()
+
+      para i de 1 ate NUMimpar faca
+         se i % 2 <> 0 entao 
+            escreva(" ",i,",")
+         fimse  
+      fimpara
+   caso 11
+      escreval()
+      escreval("PROBLEMA DENTRO OU FORA")
+      escreval()
+   
+      escreva("Quantos números serão gitados :  ")
+      leia(numero)
+     
+      para i de 1 ate numero faca
+         escreva("Digite um numero: ")
+         leia(numeroCont)
+
+         se (numeroCont >= 10) e (numeroCont <= 20) entao
+               dentro <- i -1 
+            senao
+               fora <- i -1
+         fimse
+      fimpara
+      escreval()
+      escreval("Dentro: ",dentro)
+      escreva("Fora: ",fora)
+
    fimescolha
 
    
