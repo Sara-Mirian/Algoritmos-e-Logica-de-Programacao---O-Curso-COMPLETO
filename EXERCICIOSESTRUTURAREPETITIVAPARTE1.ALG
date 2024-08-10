@@ -345,19 +345,19 @@ Inicio
       escreval("PROBLEMA DENTRO OU FORA")
       escreval()
    
-      escreva("Quantos números serão gitados :  ")
+      escreva("Quantos números serão digitados :  ")
       leia(numero)
-     
-      para i de 1 ate numero faca
+      x <- 1
+      para i de 1 ate (numero) faca
          escreva("Digite um numero: ")
          leia(numeroCont)
-
-         se (numeroCont >= 10) e (numeroCont <= 20) entao
-               dentro <- i -1 
-            senao
-               fora <- i -1
-         fimse
+         
       fimpara
+      se (numeroCont >= 10) e (numeroCont <= 20) entao
+               dentro <- x + 1
+            senao
+               fora <- x + 1
+         fimse
       escreval()
       escreval("Dentro: ",dentro)
       escreva("Fora: ",fora)
