@@ -121,7 +121,7 @@ Inicio
    escreval("         - Pares consecutivos        (7) - Tabuada              (8)")
    escreval("         - Soma Impares              (9) - Sequencia Impares   (10)")
    escreval("         - Dentro ou Fora           (11) - PAR_IMPAR           (12)")
-   escreval("         - Media_Ponderada          (13) - Divisão             (13)")
+   escreval("         - Media_Ponderada          (13) - Divisão             (14)")
    escreval()
    leia(menu)
    
@@ -437,11 +437,11 @@ Inicio
          media <- (a*2+b*3+c*5)/10
          escreval("MEDIA = ",media:1:1)
       fimpara
-   caso 13
+   caso 14
       escreval()
       escreval("PROBLEMA DIVISAO")
       escreval()
-   
+    
 
    fimescolha
 
