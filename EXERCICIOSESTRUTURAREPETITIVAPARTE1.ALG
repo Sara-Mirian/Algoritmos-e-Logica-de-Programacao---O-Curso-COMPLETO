@@ -66,7 +66,20 @@ algoritmo "Nome do Programa"
 //Problema "dentro_fora" (adaptado de URI 1072)
 //Leia um valor inteiro N. Este valor será a quantidade de valores inteiros X que serão lidos em seguida.
 //Mostre quantos destes valores X estão dentro do intervalo [10,20] e quantos estão fora do intervalo,
-//conforme exemplo 
+
+// Problema "par_impar" (adaptado de URI 1074)
+// Leia um valor inteiro N. Este valor será a quantidade de números inteiros que serão lidos em seguida.
+// Para cada valor lido, mostre uma mensagem dizendo se este valor lido é PAR ou IMPAR, e também
+// se é POSITIVO ou NEGATIVO. No caso do valor ser igual a zero (0), seu programa deverá imprimir
+// apenas NULO
+
+// Problema "media_ponderada" (adaptado de URI 1079)
+// Leia um valor inteiro N, que representa o número de casos de teste que vem a seguir. Cada caso de
+// teste consiste de 3 valores reais, para os quais você deverá calcular e mostrar a média ponderada, sendo
+// que o primeiro valor tem peso 2, o segundo valor tem peso 3 e o terceiro valor tem peso 5. Vale lembrar
+// que a média ponderada é a soma de todos os valores multiplicados pelo seu respectivo peso, dividida
+// pela soma dos pesos. 
+
 var
 menu : real 
 op : caractere
@@ -92,18 +105,23 @@ NIT,NIT1,NIT2,soma:inteiro
 NUMimpar :inteiro
 //Problema dentro fora
 numero,numeroCont,dentro,fora:inteiro
+//Problema PAR_IMPAR
+Q,nume :inteiro
+//Problema Media_Ponderada
+Qt,a,b,c,media : real 
+//Problema Divisao 
 Inicio
 
    repita
 
    escreval("Digite o numero correspondente ao programa(atividade)")
-   escreval("Problema - Crescente          (1) - Media idades        (2)")
-   escreval("         - Senha fixa         (3) - Quadrante           (4)")
-   escreval("         - Validacao  de nota (5) - Combustivel         (6)")
-   escreval("         - Pares consecutivos (7) - Tabuada             (8)")
-   escreval("         - Soma Impares       (9) - Sequencia Impares   (10)")
-   escreval("         - Dentro ou Fora    (11) -                     (12)")
-   escreval("         -                   (13) -                        ")
+   escreval("Problema - Crescente                 (1) - Media idades         (2)")
+   escreval("         - Senha fixa                (3) - Quadrante            (4)")
+   escreval("         - Validacao  de nota        (5) - Combustivel          (6)")
+   escreval("         - Pares consecutivos        (7) - Tabuada              (8)")
+   escreval("         - Soma Impares              (9) - Sequencia Impares   (10)")
+   escreval("         - Dentro ou Fora           (11) - PAR_IMPAR           (12)")
+   escreval("         - Media_Ponderada          (13) - Divisão             (13)")
    escreval()
    leia(menu)
    
@@ -347,20 +365,83 @@ Inicio
    
       escreva("Quantos números serão digitados :  ")
       leia(numero)
-      x <- 1
+      dentro <- 0
+      fora <- 0
+      
       para i de 1 ate (numero) faca
          escreva("Digite um numero: ")
          leia(numeroCont)
+
+         se (numeroCont >= 10) e (numeroCont <= 20) entao
+               dentro <- dentro + 1
+            senao
+               fora <- fora + 1
+         fimse
          
       fimpara
-      se (numeroCont >= 10) e (numeroCont <= 20) entao
-               dentro <- x + 1
-            senao
-               fora <- x + 1
-         fimse
+     
       escreval()
       escreval("Dentro: ",dentro)
       escreva("Fora: ",fora)
+
+   caso 12
+      escreval()
+      escreval("PROBLEMA PAR_IMPAR")
+      escreval()
+
+      escreva("Quantos numeros voce vai digitar? ")
+      leia(Q)
+
+      para i de 1 ate (Q) faca 
+      
+         escreva("Digite um numero:")
+         leia(nume)
+        
+         se nume % 2 <> 0 entao 
+               se nume > 0 entao 
+               escreval("IMPAR POSITIVO")
+               senao
+               se nume < 0 entao 
+               escreval("IMPAR NEGATIVO")
+               fimse
+               fimse
+         senao 
+            se nume % 2 = 0 entao 
+               se nume > 0 entao 
+               escreval("PAR POSITIVO")
+               senao
+               se nume < 0 entao 
+               escreval("PAR NEGATIVO")
+               fimse 
+               fimse 
+            fimse
+         fimse   
+         se nume = 0 entao
+            escreval("NULO")
+         fimse  
+      fimpara
+
+   caso 13
+      escreval()
+      escreval("PROBLEMA MEDIA_PONDERADA ")
+      escreval()
+
+      escreva("Quantos casos voce vai digitar? ")
+      leia(Qt)
+
+      para i de 1 ate (Qt) faca
+         escreval("Digite três números: ")
+         leia(a)
+         leia(b)
+         leia(c)
+         media <- (a*2+b*3+c*5)/10
+         escreval("MEDIA = ",media:1:1)
+      fimpara
+   caso 13
+      escreval()
+      escreval("PROBLEMA DIVISAO")
+      escreval()
+   
 
    fimescolha
 
